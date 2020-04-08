@@ -19,7 +19,7 @@ port = int(os.environ.get("PORT"))
 print('port : ', port)
 host = socket.gethostname()
 print('host :', host)
-auth_api_url = host + ":" + str(port)
+auth_api_url = "http://" + host + ":" + str(port)
 
 
 db = SQLAlchemy(app)

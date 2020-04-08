@@ -16,7 +16,7 @@ def home():
     print('port : ', port)
     host = socket.gethostname()
     print('host :', host)
-    api_url = host + ":" + str(port)
+    api_url = "http://" + host + ":" + str(port)
     print('api url :', api_url)
     print('in home')
     form = ItemForm()
