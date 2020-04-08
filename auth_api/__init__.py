@@ -1,4 +1,4 @@
-import os
+import os, socket
 from flask import Flask, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
@@ -15,7 +15,11 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SECRET_KEY'] = 'secretkey'
 
-auth_api_url = "http://0.0.0.0:5000"
+port = int(os.environ.get("PORT"))
+print('port : ', port)
+host = socket.gethostname()
+print('host :', host)
+auth_api_url = host + ":" + str(port)
 
 
 db = SQLAlchemy(app)
