@@ -27,12 +27,8 @@ def item(item):
 
 
 @core_blueprint.route('/items_list')
-# @login_required
+@login_required
 def items_list():
-    print('id', session['_id'])
-
-    print('current user ', current_user, current_user.is_authenticated)
-    print('user api key ', session['user_api_key'])
     r = requests.get(auth_api_url + '/api/items', headers={'api_key': session['user_api_key']})
     # r = ItemList().get()
     print(r)

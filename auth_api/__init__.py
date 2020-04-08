@@ -15,7 +15,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SECRET_KEY'] = 'secretkey'
 
-auth_api_url = "http://127.0.0.1:5000"
+auth_api_url = "http://localhost:5000"
 
 
 db = SQLAlchemy(app)
