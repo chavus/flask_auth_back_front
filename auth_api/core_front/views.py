@@ -1,3 +1,5 @@
+import os
+import socket
 from flask import Blueprint, render_template, redirect, url_for, session, Response
 from auth_api.core_front.forms import ItemForm
 from auth_api import auth_api_url
@@ -10,6 +12,12 @@ core_blueprint = Blueprint('core', __name__)  # , template_folder=(os.path.join(
 
 @core_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
+    port = int(os.environ.get("PORT"))
+    print('port : ', port)
+    host = socket.gethostname()
+    print('host :', host)
+    api_url = host + ":" + str(port)
+    print('api url :', api_url)
     print('in home')
     form = ItemForm()
     if form.validate_on_submit():
