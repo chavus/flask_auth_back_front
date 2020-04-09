@@ -15,13 +15,14 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 app.config['SECRET_KEY'] = 'secretkey'
 
-port = int(os.environ.get("PORT"))
-print('port : ', port)
-host = socket.gethostname()
-print('host :', host)
-auth_api_url = "http://" + host + ":" + str(port)
+ # os.environ.get("PORT")
+if os.environ.get("PORT"):
+    port = os.environ.get("PORT")
+else:
+    port = "5000"
+auth_api_url = "http://localhost:" + str(port)
 
-
+# auth_api_url = "http://localhost:5000"
 db = SQLAlchemy(app)
 Migrate(app, db)
 

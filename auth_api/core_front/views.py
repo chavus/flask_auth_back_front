@@ -12,12 +12,7 @@ core_blueprint = Blueprint('core', __name__)  # , template_folder=(os.path.join(
 
 @core_blueprint.route('/home', methods=['GET', 'POST'])
 def home():
-    port = int(os.environ.get("PORT"))
-    print('port : ', port)
-    host = socket.gethostname()
-    print('host :', host)
-    api_url = "http://" + host + ":" + str(port)
-    print('api url :', api_url)
+    print('api url :', auth_api_url)
     print('in home')
     form = ItemForm()
     if form.validate_on_submit():
@@ -35,9 +30,10 @@ def item(item):
 
 
 @core_blueprint.route('/items_list')
-@login_required
+# @login_required
 def items_list():
-    r = requests.get(auth_api_url + '/api/items', headers={'api_key': session['user_api_key']})
+    print('in items_list with api url: ', auth_api_url)
+    r = requests.get(auth_api_url + '/api/items', headers={'api_key': 'UnB7LglbdzOOF8xa'}) #session['user_api_key']
     # r = ItemList().get()
     print(r)
     return Response(r)

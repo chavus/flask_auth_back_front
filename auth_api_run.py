@@ -4,8 +4,6 @@ from flask import redirect, url_for
 
 @app.route('/')
 def index():
-    print('in here')
-    print(url_for('core.home'))
     return redirect(url_for('core.home'))
 
 # application = app
